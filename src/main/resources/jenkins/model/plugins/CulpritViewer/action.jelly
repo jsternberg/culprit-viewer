@@ -1,0 +1,18 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+  <j:if test="${action.iconFileName!=null}">
+    <l:task icon="${h.getIconFilePath(action)}" title="${action.displayName}"
+            href="${h.getActionUrl(it.url,action)}">
+      <!-- <div class="task"> -->
+      <!--   <form action="refresh" method="post"> -->
+      <!--     <input type="hidden" -->
+      <!--     <input type="image" src="${rootURL}${h.resourcePath}/images/24x24/refresh.png" /> -->
+      <!--     < -->
+      <!--   </form> -->
+      <!--   <input type="image" -->
+      <!-- </div> -->
+      <l:task icon="images/24x24/refresh.png" title="${%Refresh Culprits}"
+              href="${h.getActionUrl(it.url,action)}/refresh" />
+    </l:task>
+  </j:if>
+</j:jelly>
