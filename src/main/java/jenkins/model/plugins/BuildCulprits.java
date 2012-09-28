@@ -19,11 +19,11 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.servlet.ServletException;
 
-public class CulpritViewer implements Action {
+public class BuildCulprits implements Action {
 
     private transient AbstractBuild<?,?> build;
 
-    public CulpritViewer(AbstractBuild<?,?> build) {
+    public BuildCulprits(AbstractBuild<?,?> build) {
         this.build = build;
     }
 
@@ -32,11 +32,11 @@ public class CulpritViewer implements Action {
     }
 
     public String getDisplayName() {
-        return "Culprit Viewer";
+        return "Build Culprits";
     }
 
     public String getUrlName() {
-        return "culpritViewer";
+        return "buildCulprits";
     }
 
     public AbstractBuild getBuild() {
@@ -71,7 +71,7 @@ public class CulpritViewer implements Action {
         public Collection<? extends Action> createFor(AbstractBuild build) {
             Result r = build.getResult();
             if (r != null && r.isWorseThan(Result.SUCCESS))
-                return Collections.singletonList(new CulpritViewer(build));
+                return Collections.singletonList(new BuildCulprits(build));
             else
                 return Collections.emptyList();
         }
