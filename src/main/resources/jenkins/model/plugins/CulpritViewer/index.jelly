@@ -1,11 +1,12 @@
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:i="jelly:fmt">
-  <l:layout title="${%Build Culprits}">
+  <l:layout title="${%Build #}${it.build.number} ${%Culprits}">
     <st:include page="sidepanel.jelly" it="${it.build}" />
+    <t:setIconSize/>
     <l:main-panel>
       <h1>
         <img src="${imagesURL}/48x48/user.png" alt="" height="48" width="48"/>
-        ${%Culprits}
+        ${%Build #}${it.build.number}${% Culprits}
       </h1>
       <table class="pane bigtable" id="people">
         <tr>
@@ -15,7 +16,7 @@
         </tr>
         <j:forEach var="user" items="${it.culprits}">
           <tr>
-            <td><a href="${rootURL}/${user.url}" class="model-link"><img src="${h.getUserAvatar(p.user,iconSize)}"/></a></td>
+            <td><a href="${rootURL}/${user.url}" class="model-link"><img src="${h.getUserAvatar(user,iconSize)}"/></a></td>
             <td><a href="${rootURL}/${user.url}">${user.id}</a></td>
             <td><a href="${rootURL}/${user.url}">${user}</a></td>
           </tr>
